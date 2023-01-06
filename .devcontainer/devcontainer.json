@@ -1,0 +1,28 @@
+{
+	"name": "Nerves",
+	"build": {
+        "dockerfile": "Dockerfile"
+    },
+
+	"extensions": [
+		"jakebecker.elixir-ls"
+	],
+
+	// "features": {},
+
+	// "forwardPorts": [],
+
+	// "postCreateCommand": "uname -a",
+
+	// "customizations": {},
+
+	// "remoteUser": "root"
+
+	"remoteEnv": {
+		"MIX_TARGET": "rpi0",
+		"NERVES_WIFI_SSID": "<SSID_HERE>",
+		"NERVES_WIFI_PASSPHRASE": "<PASSWORD_HERE>",
+		"WIFI_SSID": "<SSID_HERE>",
+		"WIFI_PSK": "<PASSWORD_HERE>"
+	}
+}

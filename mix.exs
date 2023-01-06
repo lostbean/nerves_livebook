@@ -86,6 +86,10 @@ defmodule NervesLivebook.MixProject do
       {:vintage_net_mobile, "~> 0.11", targets: @cellular_targets},
       {:vintage_net_qmi, "~> 0.3", targets: @cellular_targets},
 
+      {:bumblebee, "~> 0.1.2"},
+      {:kino_bumblebee, "~> 0.1.4"},
+      #{:torchx, "~> 0.3"},
+
       # Nerves system dependencies
       {:nerves_system_rpi, "~> 1.21", runtime: false, targets: :rpi},
       {:nerves_system_rpi0, "~> 1.21", runtime: false, targets: :rpi0},

@@ -18,6 +18,15 @@ RUN wget https://github.com/fwup-home/fwup/releases/download/v${FWUP_VERSION}/fw
     rm ./fwup_${FWUP_VERSION}_amd64.deb && \
     rm -rf /var/lib/apt/lists/*
 
+ARG UID=1000
+ARG GID=1000
+
+RUN (grep -q "^.*:.*:"${GID}":.*" /etc/group || groupadd -g "${GID}" nerves)
+RUN useradd --create-home --no-log-init -u "${UID}" -g "${GID}" nerves -G sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER nerves
+
 # Install hex and rebar
 RUN mix local.hex --force
 RUN mix local.rebar --force

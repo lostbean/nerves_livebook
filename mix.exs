@@ -91,8 +91,14 @@ defmodule NervesLivebook.MixProject do
       #{:torchx, "~> 0.3"},
 
       # Nerves system dependencies
+      {:nerves_system_rpi3, "~> 1.22", runtime: false, targets: :rpi3},
+      {:nerves_system_rpi3a, "~> 1.22", runtime: false, targets: :rpi3a},
+      {:nerves_system_rpi4, "~> 1.22", runtime: false, targets: :rpi4},
       {:nerves_system_rpi3a_64bit, "~> 1.22",
-       github: "lostbean/nerves_system_rpi3a_64bit", runtime: false, targets: :rpi3a64},
+        github: "lostbean/nerves_system_rpi3a_64bit",
+        runtime: false,
+        targets: :rpi3a64
+      },
 
       # Compile-time only
       {:credo, "~> 1.6", only: :dev, runtime: false},

@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && \
-    apt-get install -y libssl-dev libncurses5-dev bc m4 unzip cmake python && \
+    apt-get install -y libssl-dev libncurses5-dev bc m4 unzip cmake python sudo && \
     rm -rf /var/lib/apt/lists/*
 
 # Install fwup (https://github.com/fhunleth/fwup)
@@ -31,6 +31,6 @@ USER nerves
 RUN mix local.hex --force
 RUN mix local.rebar --force
 
-RUN mix archive.install hex nerves_bootstrap 1.10.5 --force
+RUN mix archive.install hex nerves_bootstrap --force
 
 CMD ["/bin/bash"]

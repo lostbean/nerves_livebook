@@ -20,5 +20,3 @@ config :vintage_net,
   ]
 
 config :delux, indicators: %{default: %{green: "led0"}}
-
-## config :nerves, :firmware, fwup_conf: "config/rpi3a64/fwup.conf"

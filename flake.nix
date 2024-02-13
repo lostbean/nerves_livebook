@@ -23,13 +23,14 @@
               inherit (lib) optional optionals;
             in [
               # Dev environment
-              elixir
+              elixir_1_14
               elixir_ls
               erlang
               rebar3
               fwup
               git
               squashfsTools
+              openssl
             ] ++ optionals stdenv.isLinux [
               # Docker build
               (python3.withPackages (ps: with ps; [ pip numpy ]))
@@ -53,6 +54,10 @@
               frameworks.CoreFoundation
               frameworks.Foundation
             ];
+          # Allow to use unpatched binaries (nevers uses its own gcc to cross compile images)
+          NIX_LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [ stdenv.cc.cc ];
+          NIX_LD = with pkgs;
+            lib.fileContents "${stdenv.cc}/nix-support/dynamic-linker";
 
           shellHook = ''
             SUDO_ASKPASS=${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass
